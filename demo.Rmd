@@ -1,0 +1,34 @@
+---
+title: "demo.Rmd"
+output: html_document
+date: "2023-10-24"
+---
+
+```{r}
+# Import relevant libraries.
+library(datasets)
+library(dplyr)
+# Obtain the build-in iris dataset.
+data(iris)
+
+# Define the function called calc_sepal_width_to_length_ratio with a single input data.
+calc_sepal_width_to_length_ratio <- function(data, value) {
+        data <- data %>% mutate(sepal_width_to_length_ratio = (data[, 2]/data[, 1])*value) # The function transforms the input dataset by creating, or mutating, a new variable sepal_width_to_length_ratio that calculates the ratio between sepal width to sepal length as it takes the second column divided by the first column.
+# Depending on the value of the second argument, the calc_sepal_width_to_length_ratio will be multiplied by the specified value.
+        return(data) # Return the transformed dataset.
+}
+
+```
+
+A demo of the function with the iris dataset and value of 100:
+```{r}
+df_100 <- calc_sepal_width_to_length_ratio(iris, 100)
+df_100
+```
+
+A demo of the function with the iris dataset and value of 10:
+```{r}
+df_10 <- calc_sepal_width_to_length_ratio(iris, 10)
+df_10
+```
+
